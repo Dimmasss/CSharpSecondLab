@@ -1,0 +1,28 @@
+﻿<Window x:Class="SukailoCSharpLab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SukailoCSharpLab2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="550">
+    <Grid>
+        <DatePicker x:Name="DatePicker" HorizontalAlignment="Left" Margin="195,65,0,0" VerticalAlignment="Top" SelectedDateChanged="DateChanged"/>
+        <TextBlock x:Name="SunSign" HorizontalAlignment="Left" Margin="200,182,0,0" TextWrapping="Wrap" Text="Sun sign" VerticalAlignment="Top" Height="16" RenderTransformOrigin="0.49,0.61"/>
+        <TextBlock x:Name="ChineeseSign" HorizontalAlignment="Left" Margin="200,204,0,0" TextWrapping="Wrap" Text="Chinese sign" VerticalAlignment="Top"/>
+        <TextBlock x:Name="WhetherIsAdult" HorizontalAlignment="Left" Margin="200,227,0,0" TextWrapping="Wrap" Text="Is adult?" VerticalAlignment="Top" Height="16" RenderTransformOrigin="0.49,0.61"/>
+        <TextBlock x:Name="WhetherIsBirthday" HorizontalAlignment="Left" Margin="200,252,0,0" TextWrapping="Wrap" Text="Is birthday" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Margin="30,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="FirstName_TextChanged"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Margin="30,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="LastName_TextChanged"/>
+        <Label  Content="Name" HorizontalAlignment="Left" Margin="30,42,0,0" VerticalAlignment="Top"/>
+        <Label  Content="Surname" HorizontalAlignment="Left" Margin="30,86,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="195,38,0,0" VerticalAlignment="Top"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="357,42,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="357,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Email_TextChanged"/>
+        <Button x:Name="ProceedButton" Content="Proceed" HorizontalAlignment="Left" Margin="207,372,0,0" VerticalAlignment="Top" Width="83" Click="ProceedButton_Click" IsEnabled="False"/>
+        <Label x:Name="FirsNameAnswer" Content="Name" HorizontalAlignment="Left" Margin="30,140,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LastNameAnswer" Content="Surname" HorizontalAlignment="Left" Margin="30,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DateOfBirthAnswer" Content="Date of birth:" HorizontalAlignment="Left" Margin="195,154,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="EmailAddressAnswer" Content="E-mail address" HorizontalAlignment="Left" Margin="357,154,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
