@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static SukailoCSharpLab2.ViewModels.Exeptions;
 
 namespace SukailoCSharpLab2
 {
@@ -40,7 +41,7 @@ namespace SukailoCSharpLab2
 
         private async void ProceedButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!CalculateAge())
+            if (!CalculateAge() || !Person.IsValidEmail(Email.Text))
             {
                 FirsNameAnswer.Content = "Name : ";
                 LastNameAnswer.Content = "Surname : " ;
@@ -73,20 +74,28 @@ namespace SukailoCSharpLab2
                 DateTime today = DateTime.Today;
                 int age = today.Year - dateOfBirth.Value.Year;
                 if (dateOfBirth > today.AddYears(-age)) age--;
-                if (age < 0)
+                try
                 {
-                    MessageBox.Show("User did not born!");
-                }
-                else if(age > 135)
-                {
-                    MessageBox.Show("User cannot be over 135!");
-                }
-                else
-                {
-                    if (dateOfBirth.Value.Month == today.Month && dateOfBirth.Value.Day == today.Day)
-                        MessageBox.Show("Happy Birthday!");
-                    return true;
-                }
+                    if (age < 0)
+                    {
+                        throw new DateOfBirthInTheFutureException("NotBornException");
+                    }
+                    else if (age > 135)
+                    {
+                        throw new DateOfBirthTooFarInThePastException("TooOldException");
+                    }
+                    else
+                    {
+                        if (dateOfBirth.Value.Month == today.Month && dateOfBirth.Value.Day == today.Day)
+                            MessageBox.Show("Happy Birthday!");
+                        return true;
+                    }
+                } 
+                catch (DateOfBirthInTheFutureException)
+                { }
+                catch (DateOfBirthTooFarInThePastException) 
+                { }
+
             }
             return false;
         }
@@ -126,6 +135,4 @@ namespace SukailoCSharpLab2
             }
         }
     }
-
-    
 }

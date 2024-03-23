@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using static SukailoCSharpLab2.ViewModels.Exeptions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SukailoCSharpLab2.Models
 {
@@ -36,6 +38,12 @@ namespace SukailoCSharpLab2.Models
             LastName = lastName;
             EmailAddress = email;
             DateOfBirth = dateOfBirth;
+
+            // Validate email address
+            if (!IsValidEmail(email))
+            {
+                throw new InvalidEmailAddressException("Invalid email address format.");
+            }
         }
 
         // Конструктор, що приймає ім'я, прізвище та адресу електронної пошти
@@ -115,7 +123,25 @@ namespace SukailoCSharpLab2.Models
 
         private bool CalcIsBirthday() { return DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day == DateOfBirth.Day; }
 
-
         #endregion
+
+        #region Validation
+
+        internal static bool IsValidEmail(string emailAddress)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(emailAddress) || !emailAddress.Contains("@") || 
+                    !emailAddress.Contains(".") || emailAddress.IndexOf("@") > emailAddress.LastIndexOf("."))
+                    throw new InvalidEmailAddressException("WrongEmailException");
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+    #endregion
     }
 }
